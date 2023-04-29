@@ -49,15 +49,15 @@ const columns: GridColDef[] = [
 ];
 
 const rows = [
-  { id: 1, NAME: 'Snow', PHONENUMBER: 'Jon', CREATE: 35 },
-  { id: 2, NAME: 'Lannister', PHONENUMBER: 'Cersei', CREATE: 42 },
-  { id: 3, NAME: 'Lannister', PHONENUMBER: 'Jaime', CREATE: 45 },
-  { id: 4, NAME: 'Stark', PHONENUMBER: 'Arya', CREATE: 16 },
-  { id: 5, NAME: 'Targaryen', PHONENUMBER: 'Daenerys', CREATE: null },
+  { id: 1, NAME: 'Snow', PHONENUMBER: '010-1234-1234', CREATE: 35 },
+  { id: 2, NAME: 'Lannister', PHONENUMBER: '010-5678-5678', CREATE: 42 },
+  { id: 3, NAME: 'Lannister', PHONENUMBER: '010-1234-1234', CREATE: 45 },
+  { id: 4, NAME: 'Yebeen', PHONENUMBER: '010-0000-0000', CREATE: 16 },
+  { id: 5, NAME: 'Targaryen', PHONENUMBER: '010-0000-0000', CREATE: null },
   { id: 6, NAME: 'Melisandre', PHONENUMBER: null, CREATE: 150 },
-  { id: 7, NAME: 'Clifford', PHONENUMBER: 'Ferrara', CREATE: 44 },
-  { id: 8, NAME: 'Frances', PHONENUMBER: 'Rossini', CREATE: 36 },
-  { id: 9, NAME: 'Roxie', PHONENUMBER: 'Harvey', CREATE: 65 },
+  { id: 7, NAME: 'Clifford', PHONENUMBER: '010-xxxx-xxxx', CREATE: 44 },
+  { id: 8, NAME: 'Frances', PHONENUMBER: '010-1212-1212', CREATE: 36 },
+  { id: 9, NAME: 'Roxie', PHONENUMBER: '010-1234-2345', CREATE: 65 },
 ];
 
 const RuffleButton = () => {

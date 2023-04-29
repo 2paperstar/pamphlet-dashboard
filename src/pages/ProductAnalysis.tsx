@@ -1,50 +1,143 @@
-import { Box, Button, TextField } from '@mui/material';
+//import * as React from 'react';
+import Box from '@mui/material/Box';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+
+const columns: GridColDef[] = [
+  { field: 'id', headerName: 'ID', width: 100 },
+  {
+    field: 'productName',
+    headerName: '상품 이름',
+    width: 180,
+    editable: true,
+  },
+  {
+    field: 'Assignment',
+    headerName: '등록일',
+    width: 180,
+    editable: true,
+  },
+  {
+    field: 'Price',
+    headerName: '가격',
+    // type: 'number',
+    width: 180,
+    editable: true,
+  },
+  // {
+  //   field: 'fullName',
+  //   headerName: 'Full name',
+  //   description: 'This column has a value getter and is not sortable.',
+  //   sortable: false,
+  //   width: 160,
+  //   valueGetter: (params: GridValueGetterParams) =>
+  //     `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  // },
+  {
+    field: 'State',
+    headerName: '판매 상태',
+    width: 180,
+    editable: true,
+  },
+  {
+    field: 'Recommend',
+    headerName: '추천 제품',
+    width: 180,
+    editable: true,
+  },
+];
+
+const rows = [
+  {
+    id: 1,
+    productName: 'Snow',
+    Assignment: 'Jon',
+    Price: '$35',
+    State: '판매 예정',
+    Recommend: 'view Detail',
+  },
+  {
+    id: 2,
+    productName: 'Lannister',
+    Assignment: 'Cersei',
+    Price: '$42',
+    State: '판매 예정',
+    Recommend: 'view Detail',
+  },
+  {
+    id: 3,
+    productName: 'Lannister',
+    Assignment: 'Jaime',
+    Price: '$45',
+    State: 'pending',
+    Recommend: 'view Detail',
+  },
+  {
+    id: 4,
+    productName: 'Stark',
+    Assignment: 'Arya',
+    Price: '$16',
+    State: 'pending',
+    Recommend: 'view Detail',
+  },
+  {
+    id: 5,
+    productName: 'Targaryen',
+    Assignment: 'Daenerys',
+    Price: null,
+    State: 'pending',
+    Recommend: 'view Detail',
+  },
+  {
+    id: 6,
+    productName: 'Melisandre',
+    Assignment: null,
+    Price: '$150',
+    State: 'pending',
+    Recommend: 'view Detail',
+  },
+  {
+    id: 7,
+    productName: 'Clifford',
+    Assignment: 'Ferrara',
+    Price: '$44',
+    State: '판매 예정',
+    Recommend: 'view Detail',
+  },
+  {
+    id: 8,
+    productName: 'Frances',
+    Assignment: 'Rossini',
+    Price: '$36',
+    State: 'pending',
+    Recommend: 'view Detail',
+  },
+  {
+    id: 9,
+    productName: 'Roxie',
+    Assignment: 'Harvey',
+    Price: '$65',
+    State: 'pending',
+    Recommend: 'view Detail',
+  },
+];
 
 const ProductAnalysis = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log({
-      boothName: e.currentTarget.boothName.value,
-      boothSummary: e.currentTarget.boothSummary.value,
-    });
-  };
   return (
-    <Box
-      flex={1}
-      component="form"
-      display="flex"
-      onSubmit={handleSubmit}
-      flexDirection="column"
-      gap={2}
-    >
-      <TextField
-        label="부스 이름"
-        fullWidth
-        placeholder="메리 트랙 4호"
-        name="boothName"
+    <Box sx={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        checkboxSelection
+        disableRowSelectionOnClick
       />
-      <TextField
-        label="상세 설명"
-        fullWidth
-        placeholder="본 부스는 커피와 즐거운 디저트에 대해서 판매를 하고 있습니다."
-        multiline
-        minRows={10}
-        maxRows={10}
-        name="boothSummary"
-      />
-      <TextField
-        label="홍보 사이트"
-        fullWidth
-        placeholder="이미지로 홍보 사이트"
-        multiline
-        name="boothSummary"
-      />
-      <Box flex={1} />
-      <Box display="flex" justifyContent="flex-end">
-        <Button type="submit" variant="contained">
-          저장
-        </Button>
-      </Box>
     </Box>
   );
 };

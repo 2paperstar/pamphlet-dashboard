@@ -27,6 +27,8 @@
     "react-konva": "^18.2.7",
     "react-router": "^6.11.0",
     "react-router-dom": "^6.11.0",
+    "react-spreadsheet": "^0.8.2",
+    "scheduler": "^0.23.0",
     "zustand": "^4.3.7"
   },
   "devDependencies": {
