@@ -1,6 +1,13 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from '@mui/material';
+import { useState } from 'react';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -53,16 +60,48 @@ const rows = [
   { id: 9, NAME: 'Roxie', PHONENUMBER: 'Harvey', CREATE: 65 },
 ];
 
+const RuffleButton = () => {
+  const [open, setOpen] = useState(false);
+
+  const [randomPicked, setRandomPicked] = useState<(typeof rows)[number]>();
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>이벤트 추첨하기</Button>
+      <Dialog open={open} onClose={() => setOpen(false)} fullWidth>
+        <DialogTitle>이벤트 추첨하기</DialogTitle>
+        <DialogContent>
+          {randomPicked ? (
+            <>
+              <div>추첨된 사람: {randomPicked.NAME}</div>
+              <div>전화번호: {randomPicked.PHONENUMBER}</div>
+            </>
+          ) : (
+            '추첨할 사람을 선택해주세요.'
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpen(false)}>닫기</Button>
+          <Button
+            variant="contained"
+            onClick={() =>
+              setRandomPicked(rows[Math.floor(Math.random() * rows.length)])
+            }
+          >
+            추첨하기
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};
+
 const EventCheck = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log({
-      boothName: e.currentTarget.boothName.value,
-      boothSummary: e.currentTarget.boothSummary.value,
-    });
-  };
   return (
     <Box sx={{ height: 400, width: '100%' }}>
+      <Box display="flex">
+        <RuffleButton />
+      </Box>
       <DataGrid
         rows={rows}
         columns={columns}
