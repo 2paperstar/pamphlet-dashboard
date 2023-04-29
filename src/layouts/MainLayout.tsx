@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
@@ -15,6 +15,7 @@ import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -58,21 +59,32 @@ const Menu: React.FC<{
   menu: (typeof menus)[number];
 }> = ({ menu }) => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const { pathname } = location;
+
+  const button = (
+    <ListItemButton
+      onClick={() => setOpen((prev) => !prev)}
+      selected={menu.path === pathname}
+    >
+      <ListItemIcon>{menu.icon}</ListItemIcon>
+      <ListItemText primary={menu.title} />
+      {menu.submenus && <>{open ? <ExpandLess /> : <ExpandMore />}</>}
+    </ListItemButton>
+  );
 
   return (
     <>
-      <ListItemButton onClick={() => setOpen((prev) => !prev)}>
-        <ListItemIcon>{menu.icon}</ListItemIcon>
-        <ListItemText primary={menu.title} />
-        {menu.submenus && <>{open ? <ExpandLess /> : <ExpandMore />}</>}
-      </ListItemButton>
+      {menu.path ? <Link to={menu.path}>{button}</Link> : button}
       {menu.submenus && (
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div">
             {menu.submenus.map((submenu) => (
-              <ListItemButton key={submenu.path}>
-                <ListItemText primary={submenu.title} />
-              </ListItemButton>
+              <Link to={submenu.path} key={submenu.path}>
+                <ListItemButton selected={submenu.path === pathname}>
+                  <ListItemText primary={submenu.title} />
+                </ListItemButton>
+              </Link>
             ))}
           </List>
         </Collapse>
