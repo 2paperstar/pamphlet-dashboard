@@ -10,6 +10,7 @@ import EventRuffle from '../pages/EventRuffle';
 import EventAuthenticate from '../pages/EventAuthenticate';
 import Login from '../pages/Login';
 import useAuth from '../hooks/useAuth';
+import ExhibitionList from '../pages/ExhibitionList';
 
 const Router = () => {
   const isLogined = useAuth((state) => state.logined);
@@ -35,7 +36,10 @@ const Router = () => {
               </Route>
               <Route path="product" element={<div>상품 관리</div>} />
               <Route path="analysis" element={<div>통계 분석</div>} />
-              <Route path="exhibition" element={<Exhibition />} />
+              <Route path="exhibition">
+                <Route index element={<ExhibitionList />} />
+                <Route path=":id" element={<Exhibition />} />
+              </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </>

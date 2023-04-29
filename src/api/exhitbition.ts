@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import api from '.';
 
 interface Exhibition {
@@ -5,5 +6,15 @@ interface Exhibition {
   name: string;
 }
 
-export const getAllExhibitions = () =>
-  api.get<Exhibition[]>('/exhibition').then((res) => res.data);
+export const useAllExhibitions = () => useQuery<Exhibition[]>(['/exhibition']);
+
+export const createExhibition = (name: string) =>
+  api.post('/exhibition', { name });
+
+export const createExhibitionTicket = (data: {
+  name: string;
+  description: string;
+  price: number;
+  role_name: string;
+  exhibtion_id: number;
+}) => api.post('/exhibition/ticket', data);
