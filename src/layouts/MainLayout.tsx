@@ -1,6 +1,5 @@
 import {
   Collapse,
-  Container,
   Drawer,
   List,
   ListItemButton,
@@ -16,6 +15,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Box } from '@mui/system';
 
 const drawerWidth = 240;
 
@@ -26,15 +26,15 @@ const menus = [
     submenus: [
       {
         title: '부스 요약 소개',
-        path: '/map/summary',
+        path: '/booth/summary',
       },
       {
         title: '부스 정보 정리',
-        path: '/map/booth',
+        path: '/booth/info',
       },
       {
         title: '부스 상세 설명',
-        path: '/map/detail',
+        path: '/booth/detail',
       },
     ],
   },
@@ -95,7 +95,7 @@ const Menu: React.FC<{
 
 const MainLayout = () => {
   return (
-    <Container>
+    <Box display="flex" minHeight="100vh">
       <Drawer
         sx={{
           width: drawerWidth,
@@ -114,8 +114,16 @@ const MainLayout = () => {
           ))}
         </List>
       </Drawer>
-      <Outlet />
-    </Container>
+      <Box
+        component="main"
+        flexGrow={1}
+        display="flex"
+        alignItems="stretch"
+        flexDirection="column"
+      >
+        <Outlet />
+      </Box>
+    </Box>
   );
 };
 
