@@ -6,6 +6,7 @@ const BoothInfo = () => {
     console.log({
       boothName: e.currentTarget.boothName.value,
       boothSummary: e.currentTarget.boothSummary.value,
+      file: e.currentTarget.file.files[0],
     });
   };
   return (
@@ -17,6 +18,16 @@ const BoothInfo = () => {
       flexDirection="column"
       gap={2}
     >
+      <Button variant="contained" component="label">
+        업로드
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          name="file"
+          accept="image/*"
+          onChange={(e) => console.log(e.target.files?.[0])}
+        />
+      </Button>
       <TextField
         label="부스 이름"
         fullWidth
