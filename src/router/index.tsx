@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import BoothSummary from '../pages/BoothSummary';
 import BoothInfo from '../pages/BoothInfo';
+import Exhibition from '../pages/Exhibition';
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
           <Route path="event" element={<div>이벤트 관리</div>} />
           <Route path="product" element={<div>상품 관리</div>} />
           <Route path="analysis" element={<div>통계 분석</div>} />
+          <Route path="exhibition" element={<Exhibition />} />
         </Route>
       </Routes>
     </BrowserRouter>

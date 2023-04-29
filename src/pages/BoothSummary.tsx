@@ -11,7 +11,6 @@ const BoothSummary = () => {
   };
   return (
     <Box
-      p={1}
       flex={1}
       component="form"
       display="flex"

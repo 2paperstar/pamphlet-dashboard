@@ -53,6 +53,11 @@ const menus = [
     icon: <InsightsOutlinedIcon />,
     path: '/analysis',
   },
+  {
+    title: '행사장',
+    icon: <MapOutlinedIcon />,
+    path: '/exhibition',
+  },
 ];
 
 const Menu: React.FC<{
@@ -117,6 +122,7 @@ const MainLayout = () => {
       <Box
         component="main"
         flexGrow={1}
+        p={1}
         display="flex"
         alignItems="stretch"
         flexDirection="column"
