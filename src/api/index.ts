@@ -3,7 +3,7 @@ import axios from 'axios';
 import { QueryClient } from '@tanstack/react-query';
 
 const api = axios.create({
-  baseURL: 'http://localorder.link:5000',
+  baseURL: 'http://localorder.link:3000',
 });
 
 export const queryClient = new QueryClient({

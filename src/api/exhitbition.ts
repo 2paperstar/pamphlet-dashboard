@@ -6,15 +6,34 @@ interface Exhibition {
   name: string;
 }
 
-export const useAllExhibitions = () => useQuery<Exhibition[]>(['/exhibition']);
+interface Section {
+  id: number;
+  name: string;
+  block: [number, number, number, number];
+  level: number;
+}
+
+interface Map {
+  id: number;
+  name: string;
+  sections: Section[];
+}
+
+export const useAllExhibitions = () => useQuery<Exhibition[]>(['/exhibitions']);
+
+export const useAllMapInExhibitions = (exhibitionId: number) =>
+  useQuery<Map[]>([`/exhibitions/${exhibitionId}/maps`]);
 
 export const createExhibition = (name: string) =>
-  api.post<Exhibition>('/exhibition', { name }).then((res) => res.data);
+  api.post<Exhibition>('/exhibitions', { name }).then((res) => res.data);
 
-export const createExhibitionTicket = (data: {
+export const createExhibitionTicket = ({
+  exhibitionId,
+  ...data
+}: {
   name: string;
   description: string;
   price: number;
   role_name: string;
-  exhibtion_id: number;
-}) => api.post('/exhibition/ticket', data);
+  exhibitionId: number;
+}) => api.post(`/exhibitions/${exhibitionId}/ticket`, data);
