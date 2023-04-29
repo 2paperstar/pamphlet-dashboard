@@ -9,7 +9,7 @@ interface Exhibition {
 export const useAllExhibitions = () => useQuery<Exhibition[]>(['/exhibition']);
 
 export const createExhibition = (name: string) =>
-  api.post('/exhibition', { name });
+  api.post<Exhibition>('/exhibition', { name }).then((res) => res.data);
 
 export const createExhibitionTicket = (data: {
   name: string;
