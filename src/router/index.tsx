@@ -14,6 +14,7 @@ import ProductAnalysis from '../pages/ProductAnalysis';
 import ExhibitionList from '../pages/ExhibitionList';
 import ExhibitionCreate from '../pages/ExhibitionCreate';
 import ExhibitionMapList from '../pages/ExhibitionMapList';
+import ExhibitionMapCreate from '../pages/ExhibitionMapCreate';
 
 const Router = () => {
   const isLogined = useAuth((state) => state.logined);
@@ -45,7 +46,13 @@ const Router = () => {
               <Route path="exhibition">
                 <Route index element={<ExhibitionList />} />
                 <Route path="create" element={<ExhibitionCreate />} />
-                <Route path=":id" element={<ExhibitionMapList />} />
+                <Route path=":id">
+                  <Route index element={<ExhibitionMapList />} />
+                  <Route path="maps">
+                    <Route path="create" element={<ExhibitionMapCreate />} />
+                    <Route path=":mapId" element={<Exhibition />} />
+                  </Route>
+                </Route>
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />

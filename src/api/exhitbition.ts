@@ -27,6 +27,15 @@ export const useAllMapInExhibitions = (exhibitionId: number) =>
 export const createExhibition = (name: string) =>
   api.post<Exhibition>('/exhibitions', { name }).then((res) => res.data);
 
+export const createExhibitionMap = (
+  exhibitionId: number,
+  name: string,
+  imageId: number
+) =>
+  api
+    .post<Map>(`/exhibitions/${exhibitionId}/maps`, { name, image_id: imageId })
+    .then((res) => res.data);
+
 export const createExhibitionTicket = ({
   exhibitionId,
   ...data
