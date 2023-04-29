@@ -25,7 +25,7 @@ const CanvasArea: React.FC<{
   dimension: { width: number; height: number };
 }> = ({ image, dimension }) => {
   const { height, scale, width } = useImageSizer(image, dimension);
-  const { sqaures, ...sqaureHandler } = useSquareDrawing();
+  const { squares, ...sqaureHandler } = useSquareDrawing();
   const { lines, ...lineHandler } = useLineDrawing();
   const type = useModeStore((store) => store.type);
 
@@ -57,8 +57,8 @@ const CanvasArea: React.FC<{
             stroke="red"
           />
         ))}
-        {sqaures.map((sqaure, index) => (
-          <Rect key={index} {...sqaure} stroke="red" strokeWidth={3} />
+        {squares.map((square, index) => (
+          <Rect key={index} {...square} stroke="red" strokeWidth={3} />
         ))}
         {lines.map((line, index) => (
           <Line key={index} {...line} stroke="red" strokeWidth={3} />

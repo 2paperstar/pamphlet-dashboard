@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const useSquareDrawing = () => {
   const [isDraw, setIsDraw] = useState(false);
-  const [sqaures, setSequares] = useState<
+  const [squares, setSequares] = useState<
     {
       x: number;
       y: number;
@@ -29,7 +29,7 @@ const useSquareDrawing = () => {
   };
 
   const drawSquare = (e: Konva.KonvaEventObject<MouseEvent>) => {
-    if (!sqaures) {
+    if (!squares) {
       return;
     }
 
@@ -47,7 +47,7 @@ const useSquareDrawing = () => {
   };
 
   function drawEnd() {
-    if (!sqaures) return;
+    if (!squares) return;
     setIsDraw(false);
   }
 
@@ -55,7 +55,7 @@ const useSquareDrawing = () => {
     onMouseDown: drawStart,
     onMouseMove: drawSquare,
     onMouseUp: drawEnd,
-    sqaures,
+    squares,
   };
 };
 
