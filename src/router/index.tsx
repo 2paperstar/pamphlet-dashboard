@@ -12,6 +12,7 @@ import Login from '../pages/Login';
 import useAuth from '../hooks/useAuth';
 import ProductManagement from '../pages/ProductManagement';
 import ProductAnalysis from '../pages/ProductAnalysis';
+import ExhibitionList from '../pages/ExhibitionList';
 
 const Router = () => {
   const isLogined = useAuth((state) => state.logined);
@@ -39,6 +40,11 @@ const Router = () => {
                 <Route path="management" element={<ProductManagement />} />
                 <Route path="analysis" element={<ProductAnalysis />} />
                 <Route path="exhibition" element={<Exhibition />} />
+              </Route>
+              <Route path="analysis" element={<div>통계 분석</div>} />
+              <Route path="exhibition">
+                <Route index element={<ExhibitionList />} />
+                <Route path=":id" element={<Exhibition />} />
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
