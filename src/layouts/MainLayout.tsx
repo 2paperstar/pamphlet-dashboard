@@ -51,10 +51,6 @@ const menus = [
         title: '이벤트 참여 확인',
         path: '/event/check',
       },
-      {
-        title: '이벤트 추첨',
-        path: '/event/ruffle',
-      },
     ],
   },
   {

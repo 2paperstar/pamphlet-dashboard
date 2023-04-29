@@ -6,7 +6,6 @@ import Exhibition from '../pages/Exhibition';
 import BoothDetail from '../pages/Boothdetail';
 import EventPublish from '../pages/EventPublish';
 import EventCheck from '../pages/EventCheck';
-import EventRuffle from '../pages/EventRuffle';
 import EventAuthenticate from '../pages/EventAuthenticate';
 import Login from '../pages/Login';
 import useAuth from '../hooks/useAuth';
@@ -30,7 +29,6 @@ const Router = () => {
               <Route path="event">
                 <Route path="publish/normal" element={<EventPublish />} />
                 <Route path="check" element={<EventCheck />} />
-                <Route path="ruffle" element={<EventRuffle />} />
                 <Route
                   path="publish/authenticate"
                   element={<EventAuthenticate />}
