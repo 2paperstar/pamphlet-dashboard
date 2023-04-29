@@ -60,6 +60,20 @@ const menus = [
   {
     title: '상품 관리',
     icon: <Inventory2OutlinedIcon />,
+    submenus: [
+      {
+        title: '상품 업로드',
+        path: '/product/management',
+      },
+      {
+        title: '상품 목록 확인',
+        path: '/product/analysis',
+      },
+      {
+        title: '상품 페이지 수정',
+        path: '/product/exhibition',
+      },
+    ],
   },
   {
     title: '통계 분석',

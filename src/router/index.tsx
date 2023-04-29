@@ -10,6 +10,8 @@ import EventRuffle from '../pages/EventRuffle';
 import EventAuthenticate from '../pages/EventAuthenticate';
 import Login from '../pages/Login';
 import useAuth from '../hooks/useAuth';
+import ProductManagement from '../pages/ProductManagement';
+import ProductAnalysis from '../pages/ProductAnalysis';
 
 const Router = () => {
   const isLogined = useAuth((state) => state.logined);
@@ -33,9 +35,11 @@ const Router = () => {
                   element={<EventAuthenticate />}
                 />
               </Route>
-              <Route path="product" element={<div>상품 관리</div>} />
-              <Route path="analysis" element={<div>통계 분석</div>} />
-              <Route path="exhibition" element={<Exhibition />} />
+              <Route path="product">
+                <Route path="management" element={<ProductManagement />} />
+                <Route path="analysis" element={<ProductAnalysis />} />
+                <Route path="exhibition" element={<Exhibition />} />
+              </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </>
