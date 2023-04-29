@@ -16,6 +16,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/system';
+import useAuth from '../hooks/useAuth';
 
 const drawerWidth = 240;
 
@@ -99,6 +100,7 @@ const Menu: React.FC<{
 };
 
 const MainLayout = () => {
+  const logout = useAuth((state) => state.logout);
   return (
     <Box display="flex" minHeight="100vh">
       <Drawer
@@ -117,6 +119,9 @@ const MainLayout = () => {
           {menus.map((menu) => (
             <Menu key={menu.title} menu={menu} />
           ))}
+          <ListItemButton onClick={logout}>
+            <ListItemText primary="로그아웃" />
+          </ListItemButton>
         </List>
       </Drawer>
       <Box
