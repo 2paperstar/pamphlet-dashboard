@@ -74,21 +74,35 @@ const Exhibition = () => {
   const dimension = useDimension(containerEl);
 
   return (
-    <Box flex={1} display="flex" flexDirection="column" alignItems="center">
-      <Box
-        flex={1}
-        ref={containerEl}
-        display="flex"
-        justifyContent="center"
-        alignSelf="stretch"
-      >
-        {image ? (
-          <CanvasArea image={image} dimension={dimension} />
-        ) : (
-          <CircularProgress />
-        )}
+    <Box flex={1} display="flex" flexDirection="row">
+      <Box flex={1} display="flex" flexDirection="column" alignItems="center">
+        <Box
+          flex={1}
+          ref={containerEl}
+          display="flex"
+          justifyContent="center"
+          alignSelf="stretch"
+        >
+          {image && dimension.width && dimension.height ? (
+            <CanvasArea image={image} dimension={dimension} />
+          ) : (
+            <CircularProgress />
+          )}
+        </Box>
+        <ModeSelector />
       </Box>
-      <ModeSelector />
+      {/* <Drawer
+        open={!!selectedBox}
+        anchor="right"
+        sx={{
+          width: 250,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: 250,
+            boxSizing: 'border-box',
+          },
+        }}
+      ></Drawer> */}
     </Box>
   );
 };
