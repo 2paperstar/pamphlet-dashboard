@@ -41,12 +41,24 @@ const menus = [
   {
     title: '이벤트 관리',
     icon: <EventOutlinedIcon />,
-    path: '/event',
+    submenus: [
+      {
+        title: '이벤트 발행',
+        path: '/event/publish/normal',
+      },
+      {
+        title: '이벤트 참여 확인',
+        path: '/event/check',
+      },
+      {
+        title: '이벤트 추첨',
+        path: '/event/ruffle',
+      },
+    ],
   },
   {
     title: '상품 관리',
     icon: <Inventory2OutlinedIcon />,
-    path: '/product',
   },
   {
     title: '통계 분석',
