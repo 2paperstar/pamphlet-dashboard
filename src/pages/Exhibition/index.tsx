@@ -79,6 +79,7 @@ const CanvasArea: React.FC<{
           height={image.height}
           stroke="black"
           strokeWidth={4}
+          onPointerClick={() => setSelectedBoxId(-1)}
         />
         {finalSections.map((section) => (
           <Rect
