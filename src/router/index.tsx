@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import BoothSummary from '../pages/BoothSummary';
 import BoothInfo from '../pages/BoothInfo';
@@ -20,7 +20,7 @@ import ExhibitionTicketCreate from '../pages/ExhibitionTicketCreate';
 const Router = () => {
   const isLogined = useAuth((state) => state.logined);
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {isLogined ? (
           <>
@@ -69,7 +69,7 @@ const Router = () => {
           </>
         )}
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
