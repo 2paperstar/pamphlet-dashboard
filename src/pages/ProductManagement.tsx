@@ -9,7 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 const ProductManagement = () => {
-  const [data, setData] = useState([
+  const [data] = useState([
     [
       { value: '상품 이름' },
       { value: '상품 한 줄 소개' },
