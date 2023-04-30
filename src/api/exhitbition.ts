@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import api from '.';
+import { Booth } from './booth';
 
-interface Exhibition {
+export interface Exhibition {
   id: number;
   name: string;
 }
@@ -72,5 +73,10 @@ export const updateExhibitionMapSection = (
   sections: Omit<Section, 'id'>[]
 ) =>
   api
-    .patch(`/exhibitions/${exhibitionId}/maps/${mapId}/section`, { sections })
+    .patch(`/exhibitions/${exhibitionId}/maps/${mapId}/sections`, { sections })
     .then((res) => res.data);
+
+export const useSection = (sectionId: number) =>
+  useQuery<Section & { booth: Booth }>([
+    `/exhibitions/0/maps/0/sections/${sectionId}`,
+  ]);

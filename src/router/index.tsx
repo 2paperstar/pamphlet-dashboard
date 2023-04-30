@@ -16,6 +16,7 @@ import ExhibitionCreate from '../pages/ExhibitionCreate';
 import ExhibitionMapList from '../pages/ExhibitionMapList';
 import ExhibitionMapCreate from '../pages/ExhibitionMapCreate';
 import ExhibitionTicketCreate from '../pages/ExhibitionTicketCreate';
+import SectionBooth from '../pages/SectionBooth';
 
 const Router = () => {
   const isLogined = useAuth((state) => state.logined);
@@ -51,7 +52,13 @@ const Router = () => {
                   <Route index element={<ExhibitionMapList />} />
                   <Route path="maps">
                     <Route path="create" element={<ExhibitionMapCreate />} />
-                    <Route path=":mapId" element={<Exhibition />} />
+                    <Route path=":mapId">
+                      <Route index element={<Exhibition />} />
+                      <Route
+                        path="sections/:sectionId/booth"
+                        element={<SectionBooth />}
+                      />
+                    </Route>
                   </Route>
                   <Route
                     path="tickets/create"

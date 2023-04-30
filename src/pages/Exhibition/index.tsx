@@ -8,7 +8,7 @@ import useSquareDrawing from './useSquareDrawing';
 import ModeSelector from './ModeSelector';
 import useModeStore from './useModeStore';
 import useLineDrawing from './useLineDrawing';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import {
   Section,
   updateExhibitionMapSection,
@@ -46,6 +46,7 @@ const CanvasArea: React.FC<{
     ],
     [sections, squares]
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     onChangeSections(
@@ -94,6 +95,10 @@ const CanvasArea: React.FC<{
             onPointerDblClick={() => {
               setSections((prev) => prev.filter((s) => s.id !== section.key));
               setSequares((prev) => prev.filter((s) => s.key !== section.key));
+            }}
+            onContextMenu={(e) => {
+              e.evt.preventDefault();
+              navigate(`sections/${section.key}/booth`);
             }}
           />
         ))}
