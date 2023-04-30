@@ -1,14 +1,18 @@
 import Konva from 'konva';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
-const useSquareDrawing = () => {
+const useSquareDrawing = (highestLevel: number) => {
+  const lastId = useRef(999999);
+  const level = useRef(highestLevel);
   const [isDraw, setIsDraw] = useState(false);
   const [squares, setSequares] = useState<
     {
+      key: number;
       x: number;
       y: number;
       width: number;
       height: number;
+      level: number;
     }[]
   >([]);
 
@@ -23,6 +27,8 @@ const useSquareDrawing = () => {
         }),
         width: 0,
         height: 0,
+        key: ++lastId.current,
+        level: ++level.current,
       },
       ...prev,
     ]);
@@ -48,6 +54,9 @@ const useSquareDrawing = () => {
 
   function drawEnd() {
     if (!squares) return;
+    setSequares((prev) =>
+      prev.filter(({ width, height }) => width > 5 && height > 5)
+    );
     setIsDraw(false);
   }
 
@@ -56,6 +65,7 @@ const useSquareDrawing = () => {
     onMouseMove: drawSquare,
     onMouseUp: drawEnd,
     squares,
+    setSequares,
   };
 };
 
