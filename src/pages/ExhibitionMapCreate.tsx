@@ -50,7 +50,6 @@ const ExhibitionMapCreate = () => {
           style={{ display: 'none' }}
           name="file"
           accept="image/*"
-          onChange={(e) => console.log(e.target.files?.[0])}
           required
         />
       </Button>
