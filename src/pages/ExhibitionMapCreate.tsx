@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from '@mui/material';
-import { createExhibition, createExhibitionMap } from '../api/exhitbition';
+import { createExhibitionMap } from '../api/exhitbition';
 import { useNavigate, useParams } from 'react-router';
 import { useSnackbar } from 'notistack';
 import { uploadImage } from '../api/file';

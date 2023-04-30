@@ -22,6 +22,9 @@ const ExhibitionMapList = () => {
       <Link to={`/exhibition/${id}/maps/create`}>
         <Button>지도 생성</Button>
       </Link>
+      <Link to={`/exhibition/${id}/tickets/create`}>
+        <Button>티켓 생성</Button>
+      </Link>
       {exhibitions ? (
         <DataGrid
           getRowId={(row) => row.id}

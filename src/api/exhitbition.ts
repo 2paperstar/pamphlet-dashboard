@@ -19,6 +19,18 @@ interface Map {
   sections: Section[];
 }
 
+interface Ticket {
+  uuid: string;
+  name: string;
+  description: string;
+  price: number;
+  role: {
+    name: string;
+    id: number;
+  };
+  exhibition: Exhibition;
+}
+
 export const useAllExhibitions = () => useQuery<Exhibition[]>(['/exhibitions']);
 
 export const useAllMapInExhibitions = (exhibitionId: number) =>
@@ -45,4 +57,7 @@ export const createExhibitionTicket = ({
   price: number;
   role_name: string;
   exhibitionId: number;
-}) => api.post(`/exhibitions/${exhibitionId}/ticket`, data);
+}) =>
+  api
+    .post<Ticket>(`/exhibitions/${exhibitionId}/tickets`, data)
+    .then((res) => res.data);
